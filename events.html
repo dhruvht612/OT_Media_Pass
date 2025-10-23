@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events | Ontario Tech Media Pass</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">OT Media Pass</a>
+                <ul id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero">
+        <div class="container">
+            <h1>Events & Highlights</h1>
+            <p>From concerts and student fairs to workshops and festivals — we capture every Ontario Tech moment that
+                matters.</p>
+        </div>
+    </section>
+
+    <!-- ================= FILTER SECTION (optional) ================= -->
+    <section>
+        <div class="container" style="text-align:center;">
+            <h2 class="section-title">Browse Our Highlights</h2>
+            <div style="margin-top:1.5rem;">
+                <button class="btn" onclick="filterEvents('all')">All</button>
+                <button class="btn" onclick="filterEvents('concert')">Concerts</button>
+                <button class="btn" onclick="filterEvents('workshop')">Workshops</button>
+                <button class="btn" onclick="filterEvents('social')">Socials</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= EVENT GALLERY ================= -->
+    <section>
+        <div class="container">
+            <div id="event-gallery"
+                style="display:grid; gap:2rem; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));">
+
+                <!-- Event 1 -->
+                <div class="card event-card" data-category="concert">
+                    <img src="assets/images/event1.jpg" alt="OTSUFest"
+                        style="width:100%; border-radius:8px; margin-bottom:1rem;">
+                    <h3><i class="fas fa-music"></i> OTSUFest 2025</h3>
+                    <p>Our team covered Ontario Tech’s biggest student festival — capturing live performances, food
+                        trucks, and unforgettable moments.</p>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="card event-card" data-category="workshop">
+                    <img src="assets/images/event2.jpg" alt="HackHive Workshop"
+                        style="width:100%; border-radius:8px; margin-bottom:1rem;">
+                    <h3><i class="fas fa-laptop-code"></i> HackHive Tech Workshop</h3>
+                    <p>Students came together to explore coding, AI, and innovation. We provided full event coverage and
+                        interview reels.</p>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="card event-card" data-category="social">
+                    <img src="assets/images/event3.jpg" alt="Cultural Night"
+                        style="width:100%; border-radius:8px; margin-bottom:1rem;">
+                    <h3><i class="fas fa-users"></i> Cultural Night</h3>
+                    <p>Celebrating diversity through art, music, and food — we documented the energy and unity of the
+                        Ontario Tech community.</p>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="card event-card" data-category="workshop">
+                    <img src="assets/images/event4.jpg" alt="Media Training"
+                        style="width:100%; border-radius:8px; margin-bottom:1rem;">
+                    <h3><i class="fas fa-camera-retro"></i> Media Training Day</h3>
+                    <p>Behind the scenes, our team practices photography and editing techniques to enhance our event
+                        coverage skills.</p>
+                </div>
+
+                <!-- Event 5 -->
+                <div class="card event-card" data-category="concert">
+                    <img src="assets/images/event5.jpg" alt="Winter Gala"
+                        style="width:100%; border-radius:8px; margin-bottom:1rem;">
+                    <h3><i class="fas fa-snowflake"></i> Winter Gala</h3>
+                    <p>An elegant night of celebration and community spirit — our team captured candid portraits and
+                        event highlights.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <p>© 2025 Ontario Tech Media Pass. All rights reserved.</p>
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="contact.html">Contact</a>
+        </p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a2e0ad63c5.js" crossorigin="anonymous"></script>
+    <script>
+        // Simple Event Filter
+        function filterEvents(category) {
+            const cards = document.querySelectorAll('.event-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

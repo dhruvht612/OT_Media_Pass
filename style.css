@@ -1,0 +1,301 @@
+/* =============================
+   Ontario Tech Media Pass | style.css
+   ============================= */
+
+/* ---------- ROOT VARIABLES ---------- */
+:root {
+  /* Primary Palette */
+  --black: #0b0b0b;
+  --lavender: #c4b5fd;
+  --sand: #e8e6d8;
+  --sage: #a4ac86;
+
+  /* Secondary Palette */
+  --navy: #00334f;
+  --orange: #ff914d;
+  --yellow: #ffde59;
+
+  /* Neutrals */
+  --white: #f9fafb;
+  --gray-dark: #1f1f1f;
+  --gray-mid: #2e2e2e;
+}
+
+/* ---------- GLOBAL RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', 'Open Sans', sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+}
+
+/* ---------- REUSABLE STYLES ---------- */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 4rem 0;
+}
+
+/* ---------- NAVBAR ---------- */
+header {
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+nav .logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--sand);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav ul li a {
+  color: var(--lavender);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--orange);
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--yellow);
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* ---------- HERO SECTION ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--black), var(--navy));
+  text-align: center;
+  padding: 6rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: var(--lavender);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero p {
+  color: var(--sand);
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.hero .btn {
+  background-color: var(--orange);
+  color: var(--black);
+  padding: 0.9rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+  background-color: var(--yellow);
+  transform: scale(1.05);
+}
+
+/* ---------- SECTION HEADINGS ---------- */
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--sand);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background: var(--orange);
+  display: block;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* ---------- CARDS ---------- */
+.card {
+  background-color: var(--gray-dark);
+  border: 1px solid var(--sage);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(255, 145, 77, 0.3);
+}
+
+.card h3 {
+  color: var(--lavender);
+  margin-bottom: 0.75rem;
+}
+
+.card p {
+  color: var(--sand);
+  font-size: 0.95rem;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--black);
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--yellow);
+  transform: translateY(-2px);
+}
+
+/* ---------- FORM ---------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+form input,
+form textarea {
+  background-color: var(--gray-mid);
+  border: 1px solid var(--sage);
+  color: var(--white);
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--lavender);
+}
+
+form button {
+  background: var(--orange);
+  color: var(--black);
+  padding: 0.75rem;
+  border-radius: 30px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  background: var(--yellow);
+  transform: scale(1.05);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background-color: var(--gray-mid);
+  text-align: center;
+  padding: 1.5rem 0;
+  color: var(--sand);
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--lavender);
+  margin: 0 0.5rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: var(--orange);
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    background-color: rgba(0, 0, 0, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    display: none;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}

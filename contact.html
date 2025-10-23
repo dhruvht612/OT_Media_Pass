@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Ontario Tech Media Pass</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">OT Media Pass</a>
+                <ul id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We’d love to hear from you — whether it’s about event coverage, collaborations, or joining our creative
+                community.</p>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT INFO ================= -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p style="text-align:center; color:var(--sand); max-width:700px; margin:0 auto 2rem;">
+                Reach out via the form below or connect with us through our social media channels.
+            </p>
+
+            <div
+                style="display:grid; gap:3rem; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); align-items:start;">
+
+                <!-- Contact Form -->
+                <div>
+                    <form id="contactForm" onsubmit="return handleContact(event)">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="example@student.ontariotechu.ca"
+                            required>
+
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Type your message here..."
+                            required></textarea>
+
+                        <button type="submit">Send Message</button>
+                    </form>
+
+                    <p id="formMessage"
+                        style="text-align:center; color:var(--lavender); margin-top:1.5rem; display:none;">
+                        ✅ Thank you! Your message has been sent.
+                    </p>
+                </div>
+
+                <!-- Contact Details & Socials -->
+                <div style="text-align:center;">
+                    <h3 style="color:var(--lavender); margin-bottom:1rem;">Contact Details</h3>
+                    <p style="color:var(--sand); margin-bottom:1rem;">
+                        <i class="fas fa-envelope"></i> media.pass@ontariotechu.ca
+                    </p>
+                    <p style="color:var(--sand); margin-bottom:2rem;">
+                        <i class="fas fa-map-marker-alt"></i> 2000 Simcoe St N, Oshawa, ON
+                    </p>
+
+                    <h3 style="color:var(--lavender); margin-bottom:1rem;">Follow Us</h3>
+                    <div style="font-size:1.8rem;">
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <p>© 2025 Ontario Tech Media Pass. All rights reserved.</p>
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a>
+        </p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a2e0ad63c5.js" crossorigin="anonymous"></script>
+    <script>
+        function handleContact(event) {
+            event.preventDefault();
+            document.getElementById("contactForm").reset();
+            const msg = document.getElementById("formMessage");
+            msg.style.display = "block";
+            msg.scrollIntoView({ behavior: "smooth" });
+            return false;
+        }
+    </script>
+</body>
+
+</html>

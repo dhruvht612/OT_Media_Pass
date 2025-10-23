@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | Ontario Tech Media Pass</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">OT Media Pass</a>
+                <ul id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero">
+        <div class="container">
+            <h1>Gallery</h1>
+            <p>Experience Ontario Tech through our lens — a collection of moments, memories, and stories from our
+                talented media team.</p>
+        </div>
+    </section>
+
+    <!-- ================= FILTER SECTION ================= -->
+    <section>
+        <div class="container" style="text-align:center;">
+            <h2 class="section-title">Our Work</h2>
+            <div style="margin-top:1.5rem;">
+                <button class="btn" onclick="filterMedia('all')">All</button>
+                <button class="btn" onclick="filterMedia('photo')">Photos</button>
+                <button class="btn" onclick="filterMedia('video')">Videos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= GALLERY GRID ================= -->
+    <section>
+        <div class="container">
+            <div id="media-gallery"
+                style="display:grid; gap:2rem; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));">
+
+                <!-- Photo 1 -->
+                <div class="card media-item" data-type="photo">
+                    <img src="assets/gallery/photo1.jpg" alt="Campus Festival" style="width:100%; border-radius:8px;">
+                    <h3 style="margin-top:0.75rem;">Campus Festival</h3>
+                    <p>Capturing the vibrant energy of the annual OTSU Festival.</p>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="card media-item" data-type="photo">
+                    <img src="assets/gallery/photo2.jpg" alt="Club Fair" style="width:100%; border-radius:8px;">
+                    <h3 style="margin-top:0.75rem;">Club Fair Highlights</h3>
+                    <p>Students exploring new communities and connections on campus.</p>
+                </div>
+
+                <!-- Video 1 -->
+                <div class="card media-item" data-type="video">
+                    <video controls style="width:100%; border-radius:8px;">
+                        <source src="assets/gallery/video1.mp4" type="video/mp4">
+                    </video>
+                    <h3 style="margin-top:0.75rem;">Winter Gala Recap</h3>
+                    <p>A cinematic recap of Ontario Tech’s elegant Winter Gala 2025.</p>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="card media-item" data-type="photo">
+                    <img src="assets/gallery/photo3.jpg" alt="Sports Event" style="width:100%; border-radius:8px;">
+                    <h3 style="margin-top:0.75rem;">Varsity Spirit</h3>
+                    <p>Our photographers captured every victory and team moment.</p>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="card media-item" data-type="video">
+                    <video controls style="width:100%; border-radius:8px;">
+                        <source src="assets/gallery/video2.mp4" type="video/mp4">
+                    </video>
+                    <h3 style="margin-top:0.75rem;">Cultural Night Showcase</h3>
+                    <p>Highlights from a night celebrating diversity and community.</p>
+                </div>
+
+                <!-- Photo 4 -->
+                <div class="card media-item" data-type="photo">
+                    <img src="assets/gallery/photo4.jpg" alt="Workshop" style="width:100%; border-radius:8px;">
+                    <h3 style="margin-top:0.75rem;">Media Workshop</h3>
+                    <p>Behind-the-scenes moments from our skill-building sessions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <p>© 2025 Ontario Tech Media Pass. All rights reserved.</p>
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="contact.html">Contact</a>
+        </p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a2e0ad63c5.js" crossorigin="anonymous"></script>
+    <script>
+        // Simple media filter (photo/video/all)
+        function filterMedia(type) {
+            const items = document.querySelectorAll('.media-item');
+            items.forEach(item => {
+                if (type === 'all' || item.getAttribute('data-type') === type) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
