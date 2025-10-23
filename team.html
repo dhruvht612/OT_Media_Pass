@@ -4,134 +4,271 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Team | Ontario Tech Media Pass</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Meet the Team | Ontario Tech Media Pass</title>
+
+    <!-- Tailwind & AOS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans&display=swap"
         rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a2e0ad63c5.js" crossorigin="anonymous"></script>
+
+    <!-- Styles -->
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn {
+            @apply bg-[#e8e] text-black font-semibold px-5 py-2 rounded-full transition hover:bg-[#d4d];
+        }
+    </style>
 </head>
 
-<body>
-    <!-- ================= HEADER ================= -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">OT Media Pass</a>
-                <ul id="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="team.html" class="active">Team</a></li>
-                    <li><a href="gallery.html" class="active">Gallery</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+<body class="bg-black text-white pt-24">
+    <!-- ================= NAVBAR ================= -->
+    <header class="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-lg border-b border-[#e8e]/30 z-50">
+        <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <!-- Logo -->
+            <a href="index.html" class="text-[#e8e] font-bold text-xl tracking-wide uppercase">OT Media Pass</a>
+    
+            <!-- Desktop Links -->
+            <ul class="hidden md:flex space-x-8 text-sm font-medium">
+                <li><a href="index.html" class="hover:text-[#e8e] transition">Home</a></li>
+                <li><a href="about.html" class="hover:text-[#e8e] transition">About</a></li>
+                <li><a href="events.html" class="hover:text-[#e8e] transition">Events</a></li>
+                <li><a href="team.html" class="hover:text-[#e8e] transition">Team</a></li>
+                <li><a href="gallery.html" class="hover:text-[#e8e] transition">Gallery</a></li>
+                <li><a href="contact.html" class="hover:text-[#e8e] transition">Contact</a></li>
+            </ul>
+    
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-[#e8e] text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden flex-col bg-black/95 border-t border-[#e8e]/30 md:hidden text-center py-4 space-y-3 text-sm font-medium">
+            <a href="index.html" class="hover:text-[#e8e] block">Home</a>
+            <a href="about.html" class="hover:text-[#e8e] block">About</a>
+            <a href="events.html" class="hover:text-[#e8e] block">Events</a>
+            <a href="team.html" class="hover:text-[#e8e] block">Team</a>
+            <a href="gallery.html" class="hover:text-[#e8e] block">Gallery</a>
+            <a href="contact.html" class="hover:text-[#e8e] block">Contact</a>
         </div>
     </header>
+    
+    <!-- ================= NAVBAR SCRIPT ================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Highlight active page
+            const currentPath = window.location.pathname.split("/").pop();
+            document.querySelectorAll("header a").forEach(link => {
+                if (link.getAttribute("href") === currentPath) {
+                    link.classList.add("text-[#e8e]", "font-semibold");
+                }
+            });
+
+            // Mobile menu toggle
+            const menuBtn = document.getElementById("menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+
+            menuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+                menuBtn.innerHTML = mobileMenu.classList.contains("hidden")
+                    ? '<i class="fas fa-bars"></i>'
+                    : '<i class="fas fa-times"></i>';
+            });
+        });
+    </script>
 
     <!-- ================= HERO SECTION ================= -->
-    <section class="hero">
-        <div class="container">
-            <h1>Meet the Team</h1>
-            <p>Behind every shot and story is a dedicated group of students turning campus moments into memories.</p>
+    <section
+        class="relative flex flex-col items-center justify-center text-center py-28 px-6 bg-gradient-to-b from-black via-[#1a001a] to-black">
+        <div class="max-w-3xl mx-auto">
+            <h1
+                class="text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-[#e8e] to-white bg-clip-text text-transparent mb-6">
+                Meet the Team
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl leading-relaxed mb-8">
+                Capturing campus life through creativity and collaboration — your story, our lens.
+            </p>
+            <a href="about.html"
+                class="inline-block bg-[#e8e] text-black font-semibold px-8 py-3 rounded-full hover:opacity-90 transition duration-300 shadow-[0_0_20px_rgba(232,136,232,0.3)]">
+                Learn More
+            </a>
+        </div>
+    
+        <!-- Soft glow accent -->
+        <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(232,136,232,0.15),transparent_70%)]">
         </div>
     </section>
 
-    <!-- ================= EXECUTIVE TEAM ================= -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">Executive Team</h2>
-            <div
-                style="display:grid; gap:2rem; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); text-align:center;">
 
-                <div class="card">
-                    <img src="assets/images/executive1.jpg" alt="President"
-                        style="width:100%; border-radius:8px; margin-bottom:1rem;">
-                    <h3>Alex Johnson</h3>
-                    <p style="color:var(--lavender); font-weight:600;">President</p>
-                    <p>Leads the Media Pass team and oversees all event coverage and creative direction.</p>
+
+    
+    
+
+
+
+
+    <!-- ================= TEAM GRID ================= -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-[#e8e] mb-12">Our Creative Crew</h2>
+
+            <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3" data-aos="fade-up" data-aos-delay="100">
+                <!-- Team Member 1 -->
+                <div
+                    class="group bg-gray-950/60 border border-[#e8e]/30 rounded-2xl shadow-lg p-6 text-center hover:shadow-[0_0_20px_#e8e] hover:border-[#e8e]/70 transition-transform duration-300 hover:-translate-y-2">
+                    <img src="assets/images/team1.jpg" alt="Team Member"
+                        class="w-32 h-32 object-cover rounded-full mx-auto mb-4 border-2 border-[#e8e]/50">
+                    <h3 class="text-xl font-semibold text-[#e8e]">Avery Smith</h3>
+                    <p class="text-gray-400">Lead Photographer</p>
+                    <div class="flex justify-center space-x-4 mt-3 text-[#e8e]">
+                        <a href="#"><i class="fab fa-instagram hover:text-pink-400"></i></a>
+                        <a href="#"><i class="fab fa-linkedin hover:text-blue-400"></i></a>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <img src="assets/images/executive2.jpg" alt="Vice President"
-                        style="width:100%; border-radius:8px; margin-bottom:1rem;">
-                    <h3>Samantha Lee</h3>
-                    <p style="color:var(--lavender); font-weight:600;">Vice President</p>
-                    <p>Coordinates event logistics, manages scheduling, and supports member training.</p>
+                <!-- Team Member 2 -->
+                <div
+                    class="group bg-gray-950/60 border border-[#e8e]/30 rounded-2xl shadow-lg p-6 text-center hover:shadow-[0_0_20px_#e8e] hover:border-[#e8e]/70 transition-transform duration-300 hover:-translate-y-2">
+                    <img src="assets/images/team2.jpg" alt="Team Member"
+                        class="w-32 h-32 object-cover rounded-full mx-auto mb-4 border-2 border-[#e8e]/50">
+                    <h3 class="text-xl font-semibold text-[#e8e]">Jordan Lee</h3>
+                    <p class="text-gray-400">Videographer & Editor</p>
+                    <div class="flex justify-center space-x-4 mt-3 text-[#e8e]">
+                        <a href="#"><i class="fab fa-youtube hover:text-red-400"></i></a>
+                        <a href="#"><i class="fab fa-linkedin hover:text-blue-400"></i></a>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <img src="assets/images/executive3.jpg" alt="Communications Lead"
-                        style="width:100%; border-radius:8px; margin-bottom:1rem;">
-                    <h3>Marcus Patel</h3>
-                    <p style="color:var(--lavender); font-weight:600;">Communications Lead</p>
-                    <p>Handles social media strategy, outreach, and content publishing.</p>
+                <!-- Team Member 3 -->
+                <div
+                    class="group bg-gray-950/60 border border-[#e8e]/30 rounded-2xl shadow-lg p-6 text-center hover:shadow-[0_0_20px_#e8e] hover:border-[#e8e]/70 transition-transform duration-300 hover:-translate-y-2">
+                    <img src="assets/images/team3.jpg" alt="Team Member"
+                        class="w-32 h-32 object-cover rounded-full mx-auto mb-4 border-2 border-[#e8e]/50">
+                    <h3 class="text-xl font-semibold text-[#e8e]">Riley Chen</h3>
+                    <p class="text-gray-400">Media Coordinator</p>
+                    <div class="flex justify-center space-x-4 mt-3 text-[#e8e]">
+                        <a href="#"><i class="fab fa-instagram hover:text-pink-400"></i></a>
+                        <a href="#"><i class="fab fa-twitter hover:text-sky-400"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================= CREATIVE TEAM ================= -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">Creative Team</h2>
-            <div
-                style="display:grid; gap:2rem; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); text-align:center;">
+    <!-- ================= OUR MISSION ================= -->
+    <section class="py-20 bg-gradient-to-b from-gray-950 to-black text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-[#e8e] mb-6">Our Mission</h2>
+        <p class="max-w-3xl mx-auto text-gray-300 text-lg leading-relaxed">
+            We aim to spotlight creativity and innovation at Ontario Tech through powerful storytelling, photography,
+            and digital media — by students, for students.
+        </p>
+    </section>
 
-                <div class="card">
-                    <img src="assets/images/team1.jpg" alt="Photographer"
-                        style="width:100%; border-radius:8px; margin-bottom:1rem;">
-                    <h3>Jordan Kim</h3>
-                    <p style="color:var(--lavender); font-weight:600;">Photographer</p>
-                    <p>Captures the essence of every event with sharp detail and storytelling perspective.</p>
-                </div>
-
-                <div class="card">
-                    <img src="assets/images/team2.jpg" alt="Videographer"
-                        style="width:100%; border-radius:8px; margin-bottom:1rem;">
-                    <h3>Priya Desai</h3>
-                    <p style="color:var(--lavender); font-weight:600;">Videographer</p>
-                    <p>Specializes in shooting and editing highlight reels for campus events.</p>
-                </div>
-
-                <div class="card">
-                    <img src="assets/images/team3.jpg" alt="Editor"
-                        style="width:100%; border-radius:8px; margin-bottom:1rem;">
-                    <h3>Daniel Nguyen</h3>
-                    <p style="color:var(--lavender); font-weight:600;">Content Editor</p>
-                    <p>Transforms raw footage and images into polished digital stories ready to share.</p>
-                </div>
-
-                <div class="card">
-                    <img src="assets/images/team4.jpg" alt="Graphic Designer"
-                        style="width:100%; border-radius:8px; margin-bottom:1rem;">
-                    <h3>Emily Carter</h3>
-                    <p style="color:var(--lavender); font-weight:600;">Graphic Designer</p>
-                    <p>Designs posters, banners, and promotional graphics to elevate our brand presence.</p>
-                </div>
-            </div>
+    <!-- ================= BEHIND THE SCENES GALLERY ================= -->
+    <section class="py-16 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-[#e8e] mb-8">Behind the Scenes</h2>
+        <div class="flex overflow-x-auto space-x-6 px-6">
+            <img src="assets/images/bts1.jpg"
+                class="w-72 h-48 object-cover rounded-lg border border-[#e8e]/30 hover:border-[#e8e]/80 transition"
+                alt="BTS">
+            <img src="assets/images/bts2.jpg"
+                class="w-72 h-48 object-cover rounded-lg border border-[#e8e]/30 hover:border-[#e8e]/80 transition"
+                alt="BTS">
+            <img src="assets/images/bts3.jpg"
+                class="w-72 h-48 object-cover rounded-lg border border-[#e8e]/30 hover:border-[#e8e]/80 transition"
+                alt="BTS">
+            <img src="assets/images/bts4.jpg"
+                class="w-72 h-48 object-cover rounded-lg border border-[#e8e]/30 hover:border-[#e8e]/80 transition"
+                alt="BTS">
         </div>
     </section>
 
-    <!-- ================= CTA ================= -->
-    <section style="text-align:center;">
-        <div class="container">
-            <h2 style="color:var(--lavender); margin-bottom:1rem;">Want to Join the Team?</h2>
-            <p style="color:var(--sand); margin-bottom:1.5rem;">We’re always looking for creative and passionate
-                students to join our crew.</p>
-            <a href="apply.html" class="btn">Apply Now</a>
-        </div>
+    <!-- ================= JOIN OUR TEAM ================= -->
+    <section class="py-20 bg-black text-center border-t border-[#e8e]/30" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-[#e8e] mb-4">Join Our Team</h2>
+        <p class="text-gray-300 mb-6">Think you’ve got an eye for media? We’re always looking for new photographers,
+            editors, and storytellers.</p>
+        <a href="apply.html"
+            class="inline-block bg-[#e8e] text-black font-semibold px-6 py-3 rounded-full hover:bg-[#d4d] transition">Apply
+            Now</a>
     </section>
 
     <!-- ================= FOOTER ================= -->
-    <footer>
-        <p>© 2025 Ontario Tech Media Pass. All rights reserved.</p>
-        <p>
-            <a href="index.html">Home</a> |
-            <a href="contact.html">Contact</a>
-        </p>
+    <footer class="bg-black border-t border-[#e8e]/30 py-12 px-6 text-center md:text-left">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
+    
+            <!-- Branding -->
+            <div>
+                <h3 class="text-[#e8e] font-bold text-2xl mb-3">Ontario Tech Media Pass</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Student-led media team capturing the stories that define Ontario Tech University — through photography,
+                    videography, and creative storytelling.
+                </p>
+            </div>
+    
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-[#e8e] font-semibold mb-3">Quick Links</h3>
+                <ul class="space-y-2 text-gray-300 text-sm">
+                    <li><a href="index.html" class="hover:text-[#e8e] transition">Home</a></li>
+                    <li><a href="about.html" class="hover:text-[#e8e] transition">About</a></li>
+                    <li><a href="events.html" class="hover:text-[#e8e] transition">Events</a></li>
+                    <li><a href="team.html" class="hover:text-[#e8e] transition">Team</a></li>
+                    <li><a href="gallery.html" class="hover:text-[#e8e] transition">Gallery</a></li>
+                    <li><a href="contact.html" class="hover:text-[#e8e] transition">Contact</a></li>
+                </ul>
+            </div>
+    
+            <!-- Social Media -->
+            <div class="flex flex-col items-center md:items-end">
+                <h3 class="text-[#e8e] font-semibold mb-3">Follow Us</h3>
+                <div class="flex space-x-4 text-2xl">
+                    <a href="#" class="text-gray-400 hover:text-[#e8e] transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-[#e8e] transition"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-[#e8e] transition"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-[#e8e] transition"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Divider -->
+        <div class="border-t border-[#e8e]/20 mt-10 pt-6 text-center">
+            <p class="text-gray-500 text-sm">
+                © 2025 Ontario Tech Media Pass. All rights reserved.
+            </p>
+        </div>
     </footer>
 
-    <script src="https://kit.fontawesome.com/a2e0ad63c5.js" crossorigin="anonymous"></script>
+
+
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        // Highlight current page in navbar
+        document.addEventListener("DOMContentLoaded", () => {
+            const navLinks = document.querySelectorAll('header a');
+            const currentPath = window.location.pathname.split("/").pop();
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('text-[#e8e]', 'font-semibold');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

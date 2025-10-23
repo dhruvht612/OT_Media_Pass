@@ -5,121 +5,238 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gallery | Ontario Tech Media Pass</title>
-    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans&display=swap"
         rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a2e0ad63c5.js" crossorigin="anonymous"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    black: '#0b0b0b',
+                    lavender: '#e8e', /* unified color */
+                    white: '#f5f5f5',
+                },
+                fontFamily: {
+                    sans: ['Poppins', 'Open Sans', 'sans-serif'],
+                },
+                animation: {
+                    fadeUp: 'fadeUp 0.8s ease-out forwards',
+                },
+                keyframes: {
+                    fadeUp: {
+                        '0%': { opacity: 0, transform: 'translateY(20px)' },
+                        '100%': { opacity: 1, transform: 'translateY(0)' },
+                    },
+                },
+            },
+        },
+    }
+</script>
 </head>
 
-<body>
-    <!-- ================= HEADER ================= -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">OT Media Pass</a>
-                <ul id="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="team.html">Team</a></li>
-                    <li><a href="gallery.html" class="active">Gallery</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+<body class="bg-black text-white flex flex-col min-h-screen">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-lg border-b border-[#e8e]/30 z-50">
+        <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <!-- Logo -->
+            <a href="index.html" class="text-[#e8e] font-bold text-xl tracking-wide uppercase">OT Media Pass</a>
+    
+            <!-- Desktop Links -->
+            <ul class="hidden md:flex space-x-8 text-sm font-medium">
+                <li><a href="index.html" class="hover:text-[#e8e] transition">Home</a></li>
+                <li><a href="about.html" class="hover:text-[#e8e] transition">About</a></li>
+                <li><a href="events.html" class="hover:text-[#e8e] transition">Events</a></li>
+                <li><a href="team.html" class="hover:text-[#e8e] transition">Team</a></li>
+                <li><a href="gallery.html" class="hover:text-[#e8e] transition">Gallery</a></li>
+                <li><a href="contact.html" class="hover:text-[#e8e] transition">Contact</a></li>
+            </ul>
+    
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-[#e8e] text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden flex-col bg-black/95 border-t border-[#e8e]/30 md:hidden text-center py-4 space-y-3 text-sm font-medium">
+            <a href="index.html" class="hover:text-[#e8e] block">Home</a>
+            <a href="about.html" class="hover:text-[#e8e] block">About</a>
+            <a href="events.html" class="hover:text-[#e8e] block">Events</a>
+            <a href="team.html" class="hover:text-[#e8e] block">Team</a>
+            <a href="gallery.html" class="hover:text-[#e8e] block">Gallery</a>
+            <a href="contact.html" class="hover:text-[#e8e] block">Contact</a>
         </div>
     </header>
+    
+    <!-- ================= NAVBAR SCRIPT ================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Highlight active page
+            const currentPath = window.location.pathname.split("/").pop();
+            document.querySelectorAll("header a").forEach(link => {
+                if (link.getAttribute("href") === currentPath) {
+                    link.classList.add("text-[#e8e]", "font-semibold");
+                }
+            });
 
-    <!-- ================= HERO SECTION ================= -->
-    <section class="hero">
-        <div class="container">
-            <h1>Gallery</h1>
-            <p>Experience Ontario Tech through our lens — a collection of moments, memories, and stories from our
-                talented media team.</p>
-        </div>
+            // Mobile menu toggle
+            const menuBtn = document.getElementById("menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+
+            menuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+                menuBtn.innerHTML = mobileMenu.classList.contains("hidden")
+                    ? '<i class="fas fa-bars"></i>'
+                    : '<i class="fas fa-times"></i>';
+            });
+        });
+    </script>
+
+
+
+
+
+    <!-- ================= HERO ================= -->
+    <section class="text-center py-24 bg-gradient-to-b from-black via-[#1a001a] to-black" data-aos="fade-up">
+        <h1 class="text-4xl md:text-5xl font-bold text-[#e8e]">Gallery</h1>
+        <p class="mt-4 max-w-2xl mx-auto text-gray-300 text-lg">
+            Experience Ontario Tech through our lens — a collection of moments, memories, and stories from our talented
+            media team.
+        </p>
     </section>
 
-    <!-- ================= FILTER SECTION ================= -->
-    <section>
-        <div class="container" style="text-align:center;">
-            <h2 class="section-title">Our Work</h2>
-            <div style="margin-top:1.5rem;">
-                <button class="btn" onclick="filterMedia('all')">All</button>
-                <button class="btn" onclick="filterMedia('photo')">Photos</button>
-                <button class="btn" onclick="filterMedia('video')">Videos</button>
-            </div>
+    <!-- ================= FILTER BUTTONS ================= -->
+    <section class="py-12 text-center" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="text-3xl font-bold text-[#e8e] mb-6">Our Work</h2>
+        <div class="flex justify-center space-x-4">
+            <button onclick="filterMedia('all')"
+                class="bg-[#e8e] text-black font-semibold px-5 py-2 rounded-full hover:bg-[#d4d] transition">All</button>
+            <button onclick="filterMedia('photo')"
+                class="bg-[#e8e] text-black font-semibold px-5 py-2 rounded-full hover:bg-[#d4d] transition">Photos</button>
+            <button onclick="filterMedia('video')"
+                class="bg-[#e8e] text-black font-semibold px-5 py-2 rounded-full hover:bg-[#d4d] transition">Videos</button>
         </div>
     </section>
 
     <!-- ================= GALLERY GRID ================= -->
-    <section>
-        <div class="container">
-            <div id="media-gallery"
-                style="display:grid; gap:2rem; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));">
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <div id="media-gallery" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3" data-aos="fade-up"
+                data-aos-delay="150">
 
                 <!-- Photo 1 -->
-                <div class="card media-item" data-type="photo">
-                    <img src="assets/gallery/photo1.jpg" alt="Campus Festival" style="width:100%; border-radius:8px;">
-                    <h3 style="margin-top:0.75rem;">Campus Festival</h3>
-                    <p>Capturing the vibrant energy of the annual OTSU Festival.</p>
+                <div class="bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 media-item" data-type="photo">
+                    <img src="assets/gallery/photo1.jpg" alt="Campus Festival"
+                        class="w-full h-64 object-cover rounded-lg mb-4 border-2 border-[#e8e]/50">
+                    <h3 class="text-xl font-semibold text-[#e8e] mb-2">Campus Festival</h3>
+                    <p class="text-gray-300">Capturing the vibrant energy of the annual OTSU Festival.</p>
                 </div>
 
                 <!-- Photo 2 -->
-                <div class="card media-item" data-type="photo">
-                    <img src="assets/gallery/photo2.jpg" alt="Club Fair" style="width:100%; border-radius:8px;">
-                    <h3 style="margin-top:0.75rem;">Club Fair Highlights</h3>
-                    <p>Students exploring new communities and connections on campus.</p>
+                <div class="bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 media-item" data-type="photo">
+                    <img src="assets/gallery/photo2.jpg" alt="Club Fair"
+                        class="w-full h-64 object-cover rounded-lg mb-4 border-2 border-[#e8e]/50">
+                    <h3 class="text-xl font-semibold text-[#e8e] mb-2">Club Fair Highlights</h3>
+                    <p class="text-gray-300">Students exploring new communities and connections on campus.</p>
                 </div>
 
                 <!-- Video 1 -->
-                <div class="card media-item" data-type="video">
-                    <video controls style="width:100%; border-radius:8px;">
+                <div class="bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 media-item" data-type="video">
+                    <video controls class="w-full h-64 rounded-lg mb-4 border-2 border-[#e8e]/50">
                         <source src="assets/gallery/video1.mp4" type="video/mp4">
                     </video>
-                    <h3 style="margin-top:0.75rem;">Winter Gala Recap</h3>
-                    <p>A cinematic recap of Ontario Tech’s elegant Winter Gala 2025.</p>
+                    <h3 class="text-xl font-semibold text-[#e8e] mb-2">Winter Gala Recap</h3>
+                    <p class="text-gray-300">A cinematic recap of Ontario Tech’s elegant Winter Gala 2025.</p>
                 </div>
 
                 <!-- Photo 3 -->
-                <div class="card media-item" data-type="photo">
-                    <img src="assets/gallery/photo3.jpg" alt="Sports Event" style="width:100%; border-radius:8px;">
-                    <h3 style="margin-top:0.75rem;">Varsity Spirit</h3>
-                    <p>Our photographers captured every victory and team moment.</p>
+                <div class="bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 media-item" data-type="photo">
+                    <img src="assets/gallery/photo3.jpg" alt="Sports Event"
+                        class="w-full h-64 object-cover rounded-lg mb-4 border-2 border-[#e8e]/50">
+                    <h3 class="text-xl font-semibold text-[#e8e] mb-2">Varsity Spirit</h3>
+                    <p class="text-gray-300">Our photographers captured every victory and team moment.</p>
                 </div>
 
                 <!-- Video 2 -->
-                <div class="card media-item" data-type="video">
-                    <video controls style="width:100%; border-radius:8px;">
+                <div class="bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 media-item" data-type="video">
+                    <video controls class="w-full h-64 rounded-lg mb-4 border-2 border-[#e8e]/50">
                         <source src="assets/gallery/video2.mp4" type="video/mp4">
                     </video>
-                    <h3 style="margin-top:0.75rem;">Cultural Night Showcase</h3>
-                    <p>Highlights from a night celebrating diversity and community.</p>
+                    <h3 class="text-xl font-semibold text-[#e8e] mb-2">Cultural Night Showcase</h3>
+                    <p class="text-gray-300">Highlights from a night celebrating diversity and community.</p>
                 </div>
 
                 <!-- Photo 4 -->
-                <div class="card media-item" data-type="photo">
-                    <img src="assets/gallery/photo4.jpg" alt="Workshop" style="width:100%; border-radius:8px;">
-                    <h3 style="margin-top:0.75rem;">Media Workshop</h3>
-                    <p>Behind-the-scenes moments from our skill-building sessions.</p>
+                <div class="bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 media-item" data-type="photo">
+                    <img src="assets/gallery/photo4.jpg" alt="Workshop"
+                        class="w-full h-64 object-cover rounded-lg mb-4 border-2 border-[#e8e]/50">
+                    <h3 class="text-xl font-semibold text-[#e8e] mb-2">Media Workshop</h3>
+                    <p class="text-gray-300">Behind-the-scenes moments from our skill-building sessions.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ================= FOOTER ================= -->
-    <footer>
-        <p>© 2025 Ontario Tech Media Pass. All rights reserved.</p>
-        <p>
-            <a href="index.html">Home</a> |
-            <a href="contact.html">Contact</a>
-        </p>
+    <footer class="bg-black border-t border-[#e8e]/30 py-12 px-6 text-center md:text-left">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
+    
+            <!-- Branding -->
+            <div>
+                <h3 class="text-[#e8e] font-bold text-2xl mb-3">Ontario Tech Media Pass</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Student-led media team capturing the stories that define Ontario Tech University — through photography,
+                    videography, and creative storytelling.
+                </p>
+            </div>
+    
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-[#e8e] font-semibold mb-3">Quick Links</h3>
+                <ul class="space-y-2 text-gray-300 text-sm">
+                    <li><a href="index.html" class="hover:text-[#e8e] transition">Home</a></li>
+                    <li><a href="about.html" class="hover:text-[#e8e] transition">About</a></li>
+                    <li><a href="events.html" class="hover:text-[#e8e] transition">Events</a></li>
+                    <li><a href="team.html" class="hover:text-[#e8e] transition">Team</a></li>
+                    <li><a href="gallery.html" class="hover:text-[#e8e] transition">Gallery</a></li>
+                    <li><a href="contact.html" class="hover:text-[#e8e] transition">Contact</a></li>
+                </ul>
+            </div>
+    
+            <!-- Social Media -->
+            <div class="flex flex-col items-center md:items-end">
+                <h3 class="text-[#e8e] font-semibold mb-3">Follow Us</h3>
+                <div class="flex space-x-4 text-2xl">
+                    <a href="#" class="text-gray-400 hover:text-[#e8e] transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-[#e8e] transition"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-[#e8e] transition"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-[#e8e] transition"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Divider -->
+        <div class="border-t border-[#e8e]/20 mt-10 pt-6 text-center">
+            <p class="text-gray-500 text-sm">
+                © 2025 Ontario Tech Media Pass. All rights reserved.
+            </p>
+        </div>
     </footer>
 
-    <script src="https://kit.fontawesome.com/a2e0ad63c5.js" crossorigin="anonymous"></script>
+
     <script>
-        // Simple media filter (photo/video/all)
+        AOS.init({ duration: 800, once: true });
+
         function filterMedia(type) {
             const items = document.querySelectorAll('.media-item');
             items.forEach(item => {
-                if (type === 'all' || item.getAttribute('data-type') === type) {
+                if (type === 'all' || item.dataset.type === type) {
                     item.style.display = 'block';
                 } else {
                     item.style.display = 'none';

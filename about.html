@@ -5,110 +5,277 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About | Ontario Tech Media Pass</title>
-    <link rel="stylesheet" href="style.css" />
+
+    <!-- Tailwind & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a2e0ad63c5.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans&display=swap"
         rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        black: '#0b0b0b',
+                        lavender: '#e8e', /* unified color */
+                        white: '#f5f5f5',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Open Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        fadeUp: 'fadeUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: 0, transform: 'translateY(20px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+
 </head>
 
-<body>
-    <!-- ================= HEADER ================= -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">OT Media Pass</a>
-                <ul id="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="team.html">Team</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+<body class="flex flex-col min-h-screen bg-black text-white pt-24">
+    <!-- ================= NAVBAR ================= -->
+    <header class="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-lg border-b border-[#e8e]/30 z-50">
+        <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <!-- Logo -->
+            <a href="index.html" class="text-[#e8e] font-bold text-xl tracking-wide uppercase">OT Media Pass</a>
+    
+            <!-- Desktop Links -->
+            <ul class="hidden md:flex space-x-8 text-sm font-medium">
+                <li><a href="index.html" class="hover:text-[#e8e] transition">Home</a></li>
+                <li><a href="about.html" class="hover:text-[#e8e] transition">About</a></li>
+                <li><a href="events.html" class="hover:text-[#e8e] transition">Events</a></li>
+                <li><a href="team.html" class="hover:text-[#e8e] transition">Team</a></li>
+                <li><a href="gallery.html" class="hover:text-[#e8e] transition">Gallery</a></li>
+                <li><a href="contact.html" class="hover:text-[#e8e] transition">Contact</a></li>
+            </ul>
+    
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-[#e8e] text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden flex-col bg-black/95 border-t border-[#e8e]/30 md:hidden text-center py-4 space-y-3 text-sm font-medium">
+            <a href="index.html" class="hover:text-[#e8e] block">Home</a>
+            <a href="about.html" class="hover:text-[#e8e] block">About</a>
+            <a href="events.html" class="hover:text-[#e8e] block">Events</a>
+            <a href="team.html" class="hover:text-[#e8e] block">Team</a>
+            <a href="gallery.html" class="hover:text-[#e8e] block">Gallery</a>
+            <a href="contact.html" class="hover:text-[#e8e] block">Contact</a>
         </div>
     </header>
+    
+    <!-- ================= NAVBAR SCRIPT ================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Highlight active page
+            const currentPath = window.location.pathname.split("/").pop();
+            document.querySelectorAll("header a").forEach(link => {
+                if (link.getAttribute("href") === currentPath) {
+                    link.classList.add("text-[#e8e]", "font-semibold");
+                }
+            });
+
+            // Mobile menu toggle
+            const menuBtn = document.getElementById("menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+
+            menuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+                menuBtn.innerHTML = mobileMenu.classList.contains("hidden")
+                    ? '<i class="fas fa-bars"></i>'
+                    : '<i class="fas fa-times"></i>';
+            });
+        });
+    </script>
 
     <!-- ================= HERO SECTION ================= -->
-    <section class="hero">
-        <div class="container">
-            <h1>About Ontario Tech Media Pass</h1>
-            <p>We’re the creative storytellers behind Ontario Tech’s most memorable moments — capturing, producing, and
-                sharing student life through media.</p>
-        </div>
-    </section>
-
-    <!-- ================= WHO WE ARE ================= -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">Who We Are</h2>
-            <p style="max-width:800px; margin:0 auto; text-align:center; color:var(--sand);">
-                Ontario Tech Media Pass is a student-led organization dedicated to highlighting the vibrancy and
-                achievements of our campus community.
-                Our team of photographers, videographers, editors, and designers work together to tell authentic stories
-                from every corner of Ontario Tech University.
+    <section class="flex flex-col items-center justify-center text-center py-28 px-6 bg-black">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-[#e8e] mb-6">
+                About Ontario Tech Media Pass
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
+                We’re the creative storytellers behind Ontario Tech’s most memorable moments — capturing,
+                producing, and sharing student life through media.
             </p>
         </div>
     </section>
-
+    
+    <!-- ================= WHO WE ARE ================= -->
+    <section class="py-20 text-center bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-6 text-[#e8e]">Who We Are</h2>
+            <p class="max-w-2xl mx-auto text-gray-300 text-lg leading-relaxed">
+                Ontario Tech Media Pass is a student-led organization dedicated to highlighting the vibrancy
+                and achievements of our campus community. Our team of photographers, videographers, editors,
+                and designers work together to tell authentic stories from every corner of Ontario Tech
+                University.
+            </p>
+        </div>
+    </section>
+    
     <!-- ================= MISSION & VISION ================= -->
-    <section>
-        <div class="container"
-            style="display:grid; gap:2rem; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));">
-            <div class="card">
-                <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
-                <p>To empower Ontario Tech students to share their experiences and creativity through impactful digital
-                    storytelling — connecting campus life through the lens of media.</p>
+    <section class="py-20 bg-black border-t border-[#e8e]/20">
+        <div class="container mx-auto px-6 grid gap-10 sm:grid-cols-2">
+            <div class="bg-black border border-[#e8e]/30 rounded-2xl p-8 hover:-translate-y-1 transition text-center">
+                <h3 class="text-2xl font-semibold mb-4 flex items-center justify-center gap-3 text-[#e8e]">
+                    <i class="fas fa-bullseye"></i> Our Mission
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                    To empower Ontario Tech students to share their experiences and creativity through impactful
+                    digital storytelling — connecting campus life through the lens of media.
+                </p>
             </div>
-            <div class="card">
-                <h3><i class="fas fa-lightbulb"></i> Our Vision</h3>
-                <p>To become the hub of media excellence at Ontario Tech, inspiring innovation, collaboration, and
-                    creative leadership among student creators.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= VALUES SECTION ================= -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">Our Values</h2>
-            <div
-                style="display:grid; gap:2rem; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); text-align:center;">
-                <div class="card">
-                    <h3><i class="fas fa-users"></i> Collaboration</h3>
-                    <p>We work together to bring ideas to life and celebrate diverse perspectives.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fas fa-palette"></i> Creativity</h3>
-                    <p>We embrace imagination, boldness, and originality in everything we produce.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fas fa-handshake"></i> Community</h3>
-                    <p>We uplift the Ontario Tech spirit by capturing what makes our campus special.</p>
-                </div>
+            <div class="bg-black border border-[#e8e]/30 rounded-2xl p-8 hover:-translate-y-1 transition text-center">
+                <h3 class="text-2xl font-semibold mb-4 flex items-center justify-center gap-3 text-[#e8e]">
+                    <i class="fas fa-lightbulb"></i> Our Vision
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                    To become the hub of media excellence at Ontario Tech, inspiring innovation, collaboration,
+                    and creative leadership among student creators.
+                </p>
             </div>
         </div>
     </section>
-
+    
+    <!-- ================= VALUES ================= -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 text-[#e8e]">Our Values</h2>
+            <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 text-center">
+                <div class="bg-black border border-[#e8e]/30 rounded-2xl p-8 hover:-translate-y-1 transition">
+                    <h3 class="text-xl font-semibold mb-3 flex items-center justify-center gap-2 text-[#e8e]">
+                        <i class="fas fa-users"></i> Collaboration
+                    </h3>
+                    <p class="text-gray-300">
+                        We work together to bring ideas to life and celebrate diverse perspectives.
+                    </p>
+                </div>
+                <div class="bg-black border border-[#e8e]/30 rounded-2xl p-8 hover:-translate-y-1 transition">
+                    <h3 class="text-xl font-semibold mb-3 flex items-center justify-center gap-2 text-[#e8e]">
+                        <i class="fas fa-palette"></i> Creativity
+                    </h3>
+                    <p class="text-gray-300">
+                        We embrace imagination, boldness, and originality in everything we produce.
+                    </p>
+                </div>
+                <div class="bg-black border border-[#e8e]/30 rounded-2xl p-8 hover:-translate-y-1 transition">
+                    <h3 class="text-xl font-semibold mb-3 flex items-center justify-center gap-2 text-[#e8e]">
+                        <i class="fas fa-handshake"></i> Community
+                    </h3>
+                    <p class="text-gray-300">
+                        We uplift the Ontario Tech spirit by capturing what makes our campus special.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- ================= CTA ================= -->
-    <section style="text-align:center;">
-        <div class="container">
-            <h2 style="color:var(--lavender); margin-bottom:1rem;">Want to Get Involved?</h2>
-            <p style="color:var(--sand); margin-bottom:1.5rem;">Whether you’re a photographer, editor, or content
-                creator — there’s a place for you on our team.</p>
-            <a href="apply.html" class="btn">Join the Team</a>
+    <section class="text-center py-20 bg-black border-t border-[#e8e]/20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-4 text-[#e8e]">
+                Want to Get Involved?
+            </h2>
+            <p class="max-w-xl mx-auto text-lg text-gray-300 mb-8">
+                Whether you’re a photographer, editor, or content creator — there’s a place for you on our team.
+            </p>
+            <a href="apply.html"
+                class="inline-block bg-[#e8e] text-black font-semibold px-10 py-3 rounded-full hover:opacity-90 transition duration-300">
+                Join the Team
+            </a>
         </div>
     </section>
+
+
+
+
+    
+    
+   
+
+
 
     <!-- ================= FOOTER ================= -->
-    <footer>
-        <p>© 2025 Ontario Tech Media Pass. All rights reserved.</p>
-        <p>
-            <a href="index.html">Home</a> |
-            <a href="contact.html">Contact</a>
-        </p>
+    <footer class="bg-black border-t border-[#e8e]/30 py-12 px-6 text-center md:text-left">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
+    
+            <!-- Branding -->
+            <div>
+                <h3 class="text-[#e8e] font-bold text-2xl mb-3">Ontario Tech Media Pass</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Student-led media team capturing the stories that define Ontario Tech University — through photography,
+                    videography, and creative storytelling.
+                </p>
+            </div>
+    
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-[#e8e] font-semibold mb-3">Quick Links</h3>
+                <ul class="space-y-2 text-gray-300 text-sm">
+                    <li><a href="index.html" class="hover:text-[#e8e] transition">Home</a></li>
+                    <li><a href="about.html" class="hover:text-[#e8e] transition">About</a></li>
+                    <li><a href="events.html" class="hover:text-[#e8e] transition">Events</a></li>
+                    <li><a href="team.html" class="hover:text-[#e8e] transition">Team</a></li>
+                    <li><a href="gallery.html" class="hover:text-[#e8e] transition">Gallery</a></li>
+                    <li><a href="contact.html" class="hover:text-[#e8e] transition">Contact</a></li>
+                </ul>
+            </div>
+    
+            <!-- Social Media -->
+            <div class="flex flex-col items-center md:items-end">
+                <h3 class="text-[#e8e] font-semibold mb-3">Follow Us</h3>
+                <div class="flex space-x-4 text-2xl">
+                    <a href="#" class="text-gray-400 hover:text-[#e8e] transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-[#e8e] transition"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-[#e8e] transition"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-[#e8e] transition"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Divider -->
+        <div class="border-t border-[#e8e]/20 mt-10 pt-6 text-center">
+            <p class="text-gray-500 text-sm">
+                © 2025 Ontario Tech Media Pass. All rights reserved.
+            </p>
+        </div>
     </footer>
 
-    <script src="https://kit.fontawesome.com/a2e0ad63c5.js" crossorigin="anonymous"></script>
+
+    <!-- ================= SCRIPT ================= -->
+    <script>
+        // Highlight current page in navbar
+        document.addEventListener("DOMContentLoaded", () => {
+            const navLinks = document.querySelectorAll('header a');
+            const currentPath = window.location.pathname.split("/").pop();
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('text-[#e8e]', 'font-semibold');
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
