@@ -6,17 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meet the Team | Ontario Tech Media Pass</title>
 
-    <!-- Tailwind & AOS -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-    <!-- Fonts & Icons -->
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Font Awesome (Latest, 2025) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-tR9RcBz9Xv6W4F6GqW4oE7nEJxXKuBNB9p3z+N0yl7bEqXebgcA4a6zOKQRCqlX9GiT2yueo5yqzqQwQMbZr9Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans&display=swap"
         rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a2e0ad63c5.js" crossorigin="anonymous"></script>
 
-    <!-- Styles -->
+    <!-- Custom Styles -->
     <style>
         body {
             background-color: #000;
@@ -30,14 +37,13 @@
     </style>
 </head>
 
-<body class="bg-black text-white pt-24">
-    <!-- ================= NAVBAR ================= -->
+
+<body class="pt-24">
+
+    <!-- NAVBAR -->
     <header class="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-lg border-b border-[#e8e]/30 z-50">
         <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-            <!-- Logo -->
             <a href="index.html" class="text-[#e8e] font-bold text-xl tracking-wide uppercase">OT Media Pass</a>
-    
-            <!-- Desktop Links -->
             <ul class="hidden md:flex space-x-8 text-sm font-medium">
                 <li><a href="index.html" class="hover:text-[#e8e] transition">Home</a></li>
                 <li><a href="about.html" class="hover:text-[#e8e] transition">About</a></li>
@@ -46,14 +52,10 @@
                 <li><a href="gallery.html" class="hover:text-[#e8e] transition">Gallery</a></li>
                 <li><a href="contact.html" class="hover:text-[#e8e] transition">Contact</a></li>
             </ul>
-    
-            <!-- Mobile Menu Button -->
             <button id="menu-btn" class="md:hidden text-[#e8e] text-2xl focus:outline-none">
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
-    
-        <!-- Mobile Menu -->
         <div id="mobile-menu"
             class="hidden flex-col bg-black/95 border-t border-[#e8e]/30 md:hidden text-center py-4 space-y-3 text-sm font-medium">
             <a href="index.html" class="hover:text-[#e8e] block">Home</a>
@@ -64,32 +66,8 @@
             <a href="contact.html" class="hover:text-[#e8e] block">Contact</a>
         </div>
     </header>
-    
-    <!-- ================= NAVBAR SCRIPT ================= -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Highlight active page
-            const currentPath = window.location.pathname.split("/").pop();
-            document.querySelectorAll("header a").forEach(link => {
-                if (link.getAttribute("href") === currentPath) {
-                    link.classList.add("text-[#e8e]", "font-semibold");
-                }
-            });
 
-            // Mobile menu toggle
-            const menuBtn = document.getElementById("menu-btn");
-            const mobileMenu = document.getElementById("mobile-menu");
-
-            menuBtn.addEventListener("click", () => {
-                mobileMenu.classList.toggle("hidden");
-                menuBtn.innerHTML = mobileMenu.classList.contains("hidden")
-                    ? '<i class="fas fa-bars"></i>'
-                    : '<i class="fas fa-times"></i>';
-            });
-        });
-    </script>
-
-    <!-- ================= HERO SECTION ================= -->
+    <!-- HERO -->
     <section
         class="relative flex flex-col items-center justify-center text-center py-28 px-6 bg-gradient-to-b from-black via-[#1a001a] to-black">
         <div class="max-w-3xl mx-auto">
@@ -105,69 +83,129 @@
                 Learn More
             </a>
         </div>
-    
-        <!-- Soft glow accent -->
-        <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(232,136,232,0.15),transparent_70%)]">
+        <div
+            class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(232,136,232,0.15),transparent_70%)]">
         </div>
     </section>
 
-
-
-    
-    
-
-
-
-
-    <!-- ================= TEAM GRID ================= -->
+    <!-- TEAM GRID -->
     <section class="py-16">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center text-[#e8e] mb-12">Our Creative Crew</h2>
+            <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3" data-aos="fade-up">
 
-            <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3" data-aos="fade-up" data-aos-delay="100">
-                <!-- Team Member 1 -->
+                <!-- Natalie -->
                 <div
                     class="group bg-gray-950/60 border border-[#e8e]/30 rounded-2xl shadow-lg p-6 text-center hover:shadow-[0_0_20px_#e8e] hover:border-[#e8e]/70 transition-transform duration-300 hover:-translate-y-2">
-                    <img src="assets/images/team1.jpg" alt="Team Member"
+                    <img src="Team_Pictures/Natalie_Picture.jpg" alt="Natalie"
                         class="w-32 h-32 object-cover rounded-full mx-auto mb-4 border-2 border-[#e8e]/50">
-                    <h3 class="text-xl font-semibold text-[#e8e]">Avery Smith</h3>
-                    <p class="text-gray-400">Lead Photographer</p>
-                    <div class="flex justify-center space-x-4 mt-3 text-[#e8e]">
-                        <a href="#"><i class="fab fa-instagram hover:text-pink-400"></i></a>
-                        <a href="#"><i class="fab fa-linkedin hover:text-blue-400"></i></a>
+                    <h3 class="text-xl font-semibold text-[#e8e]">Natalie</h3>
+                    <p class="text-gray-400">Outreach Coordinator · First-Year Nursing Student</p>
+                    <p class="text-gray-300 text-sm mt-3 italic">
+                        Hey everyone! I’m Natalie. Fun fact: I love running and also have my own vlog-like channel <span
+                            class="text-[#e8e]">@nursing.autumn</span>.
+                    </p>
+                    <div class="flex justify-center space-x-4 mt-4 text-[#e8e] text-2xl">
+                        <a href="#" target="_blank" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
 
-                <!-- Team Member 2 -->
+                <!-- Hannah -->
                 <div
                     class="group bg-gray-950/60 border border-[#e8e]/30 rounded-2xl shadow-lg p-6 text-center hover:shadow-[0_0_20px_#e8e] hover:border-[#e8e]/70 transition-transform duration-300 hover:-translate-y-2">
-                    <img src="assets/images/team2.jpg" alt="Team Member"
+                    <img src="Team_Pictures/Hannah_Pic.jpg" alt="Hannah"
                         class="w-32 h-32 object-cover rounded-full mx-auto mb-4 border-2 border-[#e8e]/50">
-                    <h3 class="text-xl font-semibold text-[#e8e]">Jordan Lee</h3>
-                    <p class="text-gray-400">Videographer & Editor</p>
-                    <div class="flex justify-center space-x-4 mt-3 text-[#e8e]">
-                        <a href="#"><i class="fab fa-youtube hover:text-red-400"></i></a>
-                        <a href="#"><i class="fab fa-linkedin hover:text-blue-400"></i></a>
+                    <h3 class="text-xl font-semibold text-[#e8e]">Hannah Cam</h3>
+                    <p class="text-gray-400">Treasurer · 2nd Year Accounting & Finance Minor</p>
+                    <p class="text-gray-300 text-sm mt-3 italic">
+                        Hi, I’m Hannah! Fun fact: if I could have any superpower, it would be the ability to speak all
+                        languages fluently.
+                    </p>
+                    <div class="flex justify-center space-x-4 mt-4 text-[#e8e] text-2xl">
+                        <a href="https://www.linkedin.com/in/hannahcam" target="_blank" class="hover:text-blue-400"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
 
-                <!-- Team Member 3 -->
+                <!-- Ryan -->
                 <div
                     class="group bg-gray-950/60 border border-[#e8e]/30 rounded-2xl shadow-lg p-6 text-center hover:shadow-[0_0_20px_#e8e] hover:border-[#e8e]/70 transition-transform duration-300 hover:-translate-y-2">
-                    <img src="assets/images/team3.jpg" alt="Team Member"
+                    <img src="Team_Pictures/Ryan_Pic.jpg" alt="Ryan"
+                        class="w-32 h-32 object-cover rounded-full mx-auto mb-4 border-2 border-[#e8e]/50">
+                    <h3 class="text-xl font-semibold text-[#e8e]">Ryan Wetson</h3>
+                    <p class="text-gray-400">Forensic Psychology Advanced Entry · Minor in Digital Media & Communication
+                    </p>
+                    <p class="text-gray-300 text-sm mt-3 italic">
+                        I love exploring the arts and media entertainment, and though I may not be a pro, I enjoy trying
+                        new creative endeavors. Fun fact: I currently work in the film and television industry.
+                    </p>
+                    <div class="flex justify-center space-x-4 mt-4 text-[#e8e] text-2xl">
+                        <a href="#" target="_blank" class="hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Team Member: Justin Tran -->
+                <div
+                    class="group bg-gray-950/60 border border-[#e8e]/30 rounded-2xl shadow-lg p-6 text-center hover:shadow-[0_0_20px_#e8e] hover:border-[#e8e]/70 transition-transform duration-300 hover:-translate-y-2">
+                    <img src="Team_Pictures/Justin_Pic.jpg" alt="Justin"
+                        class="w-32 h-32 object-cover rounded-full mx-auto mb-4 border-2 border-[#e8e]/50">
+                    <h3 class="text-xl font-semibold text-[#e8e]">Justin Tran</h3>
+                    <p class="text-gray-400">4th Year · Mechatronics Engineering</p>
+                    <p class="text-gray-300 text-sm mt-3 italic">
+                        Hi, I’m Justin! (Use the bio you shared in the introductions channel here.)
+                    </p>
+                    <div class="flex justify-center space-x-4 mt-4 text-[#e8e] text-2xl">
+                        <a href="https://www.linkedin.com/in/justintran1" target="_blank" class="hover:text-blue-400">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/jdtzephyr/" target="_blank" class="hover:text-pink-400">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Team Member: Al Zaara Hashim -->
+                <div
+                    class="group bg-gray-950/60 border border-[#e8e]/30 rounded-2xl shadow-lg p-6 text-center hover:shadow-[0_0_20px_#e8e] hover:border-[#e8e]/70 transition-transform duration-300 hover:-translate-y-2">
+                    <img src="Team_Pictures/AlZaara_Pic.jpg" alt="Al Zaara"
+                        class="w-32 h-32 object-cover rounded-full mx-auto mb-4 border-2 border-[#e8e]/50">
+                    <h3 class="text-xl font-semibold text-[#e8e]">Al Zaara Hashim</h3>
+                    <p class="text-gray-400">Marketing Executive · 2nd Year Psychology</p>
+                    <p class="text-gray-300 text-sm mt-3 italic">
+                        Hi, I’m Al Zaara! (You can add a short bio here if needed.)
+                    </p>
+                    <div class="flex justify-center space-x-4 mt-4 text-[#e8e] text-2xl">
+                        <a href="https://www.linkedin.com/in/al-zaara-hashim-884622283" target="_blank" class="hover:text-blue-400">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/alzh.jpeg?igsh=a3MzNmliYjI2MDFl&utm_source=qr" target="_blank"
+                            class="hover:text-pink-400">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Riley -->
+                <div
+                    class="group bg-gray-950/60 border border-[#e8e]/30 rounded-2xl shadow-lg p-6 text-center hover:shadow-[0_0_20px_#e8e] hover:border-[#e8e]/70 transition-transform duration-300 hover:-translate-y-2">
+                    <img src="assets/images/team4.jpg" alt="Riley"
                         class="w-32 h-32 object-cover rounded-full mx-auto mb-4 border-2 border-[#e8e]/50">
                     <h3 class="text-xl font-semibold text-[#e8e]">Riley Chen</h3>
                     <p class="text-gray-400">Media Coordinator</p>
-                    <div class="flex justify-center space-x-4 mt-3 text-[#e8e]">
-                        <a href="#"><i class="fab fa-instagram hover:text-pink-400"></i></a>
-                        <a href="#"><i class="fab fa-twitter hover:text-sky-400"></i></a>
+                    <div class="flex justify-center space-x-4 mt-4 text-[#e8e] text-2xl">
+                        <a href="#" target="_blank" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="hover:text-sky-400"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ================= OUR MISSION ================= -->
+    <!-- OUR MISSION -->
     <section class="py-20 bg-gradient-to-b from-gray-950 to-black text-center" data-aos="fade-up">
         <h2 class="text-3xl font-bold text-[#e8e] mb-6">Our Mission</h2>
         <p class="max-w-3xl mx-auto text-gray-300 text-lg leading-relaxed">
@@ -176,7 +214,7 @@
         </p>
     </section>
 
-    <!-- ================= BEHIND THE SCENES GALLERY ================= -->
+    <!-- BEHIND THE SCENES -->
     <section class="py-16 text-center" data-aos="fade-up">
         <h2 class="text-3xl font-bold text-[#e8e] mb-8">Behind the Scenes</h2>
         <div class="flex overflow-x-auto space-x-6 px-6">
@@ -195,7 +233,7 @@
         </div>
     </section>
 
-    <!-- ================= JOIN OUR TEAM ================= -->
+    <!-- JOIN OUR TEAM -->
     <section class="py-20 bg-black text-center border-t border-[#e8e]/30" data-aos="fade-up">
         <h2 class="text-3xl font-bold text-[#e8e] mb-4">Join Our Team</h2>
         <p class="text-gray-300 mb-6">Think you’ve got an eye for media? We’re always looking for new photographers,
@@ -205,20 +243,16 @@
             Now</a>
     </section>
 
-    <!-- ================= FOOTER ================= -->
+    <!-- FOOTER -->
     <footer class="bg-black border-t border-[#e8e]/30 py-12 px-6 text-center md:text-left">
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
-    
-            <!-- Branding -->
             <div>
                 <h3 class="text-[#e8e] font-bold text-2xl mb-3">Ontario Tech Media Pass</h3>
                 <p class="text-gray-400 text-sm leading-relaxed">
-                    Student-led media team capturing the stories that define Ontario Tech University — through photography,
-                    videography, and creative storytelling.
+                    Student-led media team capturing the stories that define Ontario Tech University — through
+                    photography, videography, and creative storytelling.
                 </p>
             </div>
-    
-            <!-- Quick Links -->
             <div>
                 <h3 class="text-[#e8e] font-semibold mb-3">Quick Links</h3>
                 <ul class="space-y-2 text-gray-300 text-sm">
@@ -230,8 +264,6 @@
                     <li><a href="contact.html" class="hover:text-[#e8e] transition">Contact</a></li>
                 </ul>
             </div>
-    
-            <!-- Social Media -->
             <div class="flex flex-col items-center md:items-end">
                 <h3 class="text-[#e8e] font-semibold mb-3">Follow Us</h3>
                 <div class="flex space-x-4 text-2xl">
@@ -242,30 +274,24 @@
                 </div>
             </div>
         </div>
-    
-        <!-- Divider -->
         <div class="border-t border-[#e8e]/20 mt-10 pt-6 text-center">
-            <p class="text-gray-500 text-sm">
-                © 2025 Ontario Tech Media Pass. All rights reserved.
-            </p>
+            <p class="text-gray-500 text-sm">© 2025 Ontario Tech Media Pass. All rights reserved.</p>
         </div>
     </footer>
 
-
-
-
-    <!-- ================= SCRIPTS ================= -->
     <script>
+        // AOS initialization
         AOS.init({ duration: 800, once: true });
 
-        // Highlight current page in navbar
+        // Mobile menu toggle
         document.addEventListener("DOMContentLoaded", () => {
-            const navLinks = document.querySelectorAll('header a');
-            const currentPath = window.location.pathname.split("/").pop();
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPath) {
-                    link.classList.add('text-[#e8e]', 'font-semibold');
-                }
+            const menuBtn = document.getElementById("menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            menuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+                menuBtn.innerHTML = mobileMenu.classList.contains("hidden")
+                    ? '<i class="fas fa-bars"></i>'
+                    : '<i class="fas fa-times"></i>';
             });
         });
     </script>
