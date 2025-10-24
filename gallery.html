@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/a2e0ad63c5.js" crossorigin="anonymous"></script>
@@ -97,11 +99,7 @@
             });
         });
     </script>
-
-
-
-
-
+    
     <!-- ================= HERO ================= -->
     <section class="text-center py-24 bg-gradient-to-b from-black via-[#1a001a] to-black" data-aos="fade-up">
         <h1 class="text-4xl md:text-5xl font-bold text-[#e8e]">Gallery</h1>
@@ -124,64 +122,96 @@
         </div>
     </section>
 
-    <!-- ================= GALLERY GRID ================= -->
-    <section class="py-12">
+    <!-- ================= EVENT GALLERY ================= -->
+    <section id="event-gallery" class="py-16 bg-black">
         <div class="container mx-auto px-6">
-            <div id="media-gallery" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3" data-aos="fade-up"
-                data-aos-delay="150">
-
-                <!-- Photo 1 -->
-                <div class="bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 media-item" data-type="photo">
-                    <img src="assets/gallery/photo1.jpg" alt="Campus Festival"
-                        class="w-full h-64 object-cover rounded-lg mb-4 border-2 border-[#e8e]/50">
-                    <h3 class="text-xl font-semibold text-[#e8e] mb-2">Campus Festival</h3>
-                    <p class="text-gray-300">Capturing the vibrant energy of the annual OTSU Festival.</p>
+            <h2 class="text-3xl font-bold text-center text-[#e8e] mb-10">Event Gallery</h2>
+    
+            <!-- Gallery Grid -->
+            <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3" data-aos="fade-up" data-aos-delay="150">
+    
+                <div
+                    class="event-card bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 transition transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(232,136,232,0.3)]">
+                
+                    <!-- Swiper Carousel -->
+                    <div class="swiper mySwiper overflow-hidden rounded-lg mb-4">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="Events_Pics&Posters/First Event/Pictures/5FED7032-D6F6-4012-9D99-A47C3C091E51.jpg" alt="MediaPass Launch 1"
+                                    class="w-full h-72 object-cover rounded-lg border-2 border-[#e8e]/50">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="Events_Pics&Posters/First Event/Pictures/BE15BDF0-69DB-4F4A-8BEF-4989831C5C08.jpg" alt="MediaPass Launch 2"
+                                    class="w-full h-72 object-cover rounded-lg border-2 border-[#e8e]/50">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="Events_Pics&Posters/First Event/Pictures/DBC0ACF3-5812-4F84-8E39-1C0196EBCF70.jpg" alt="MediaPass Launch 3"
+                                    class="w-full h-72 object-cover rounded-lg border-2 border-[#e8e]/50">
+                            </div>
+                        </div>
+                        <!-- Navigation arrows -->
+                        <div class="swiper-button-next text-[#e8e]"></div>
+                        <div class="swiper-button-prev text-[#e8e]"></div>
+                        <!-- Pagination dots -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                
+                    <h3 class="text-2xl font-semibold text-[#e8e] mb-2">Ontario Tech MediaPass Launch</h3>
+                    <p class="text-gray-300">
+                        Our very first MediaPass launch event — celebrating creativity, innovation, and community at Ontario Tech
+                        University.
+                    </p>
                 </div>
 
-                <!-- Photo 2 -->
-                <div class="bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 media-item" data-type="photo">
-                    <img src="assets/gallery/photo2.jpg" alt="Club Fair"
-                        class="w-full h-64 object-cover rounded-lg mb-4 border-2 border-[#e8e]/50">
-                    <h3 class="text-xl font-semibold text-[#e8e] mb-2">Club Fair Highlights</h3>
-                    <p class="text-gray-300">Students exploring new communities and connections on campus.</p>
-                </div>
+                <!-- Initialize Swiper -->
+                <script>
+                    const swiper = new Swiper(".mySwiper", {
+                        loop: true,
+                        pagination: {
+                            el: ".swiper-pagination",
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        },
+                        autoplay: {
+                            delay: 4000,
+                            disableOnInteraction: false,
+                        },
+                    });
+                </script>
 
-                <!-- Video 1 -->
-                <div class="bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 media-item" data-type="video">
-                    <video controls class="w-full h-64 rounded-lg mb-4 border-2 border-[#e8e]/50">
-                        <source src="assets/gallery/video1.mp4" type="video/mp4">
-                    </video>
-                    <h3 class="text-xl font-semibold text-[#e8e] mb-2">Winter Gala Recap</h3>
-                    <p class="text-gray-300">A cinematic recap of Ontario Tech’s elegant Winter Gala 2025.</p>
+    
+                <!-- Event 2: Brand Blueprint Collab -->
+                <div
+                    class="event-card bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 transition transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(232,136,232,0.3)]">
+                    <div class="overflow-hidden rounded-lg mb-4">
+                        <img src="assets/gallery/brand-blueprint.jpg" alt="Brand Blueprint: For Creators and Entrepreneurs"
+                            class="w-full h-72 object-cover rounded-lg hover:scale-105 transition duration-500 ease-in-out border-2 border-[#e8e]/50">
+                    </div>
+                    <h3 class="text-2xl font-semibold text-[#e8e] mb-2">Brand Blueprint: For Creators and Entrepreneurs</h3>
+                    <p class="text-gray-300">A Skill Series × MediaPass collab — a night on crafting standout personal and
+                        business
+                        brands.</p>
+                    <p class="text-gray-400 mt-2 text-sm">📍 ERC 2100 &nbsp; | &nbsp; 📅 October 24, 2025 &nbsp; | &nbsp; ⏰
+                        5PM – 8PM</p>
                 </div>
-
-                <!-- Photo 3 -->
-                <div class="bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 media-item" data-type="photo">
-                    <img src="assets/gallery/photo3.jpg" alt="Sports Event"
-                        class="w-full h-64 object-cover rounded-lg mb-4 border-2 border-[#e8e]/50">
-                    <h3 class="text-xl font-semibold text-[#e8e] mb-2">Varsity Spirit</h3>
-                    <p class="text-gray-300">Our photographers captured every victory and team moment.</p>
-                </div>
-
-                <!-- Video 2 -->
-                <div class="bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 media-item" data-type="video">
-                    <video controls class="w-full h-64 rounded-lg mb-4 border-2 border-[#e8e]/50">
-                        <source src="assets/gallery/video2.mp4" type="video/mp4">
-                    </video>
-                    <h3 class="text-xl font-semibold text-[#e8e] mb-2">Cultural Night Showcase</h3>
-                    <p class="text-gray-300">Highlights from a night celebrating diversity and community.</p>
-                </div>
-
-                <!-- Photo 4 -->
-                <div class="bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 media-item" data-type="photo">
-                    <img src="assets/gallery/photo4.jpg" alt="Workshop"
-                        class="w-full h-64 object-cover rounded-lg mb-4 border-2 border-[#e8e]/50">
-                    <h3 class="text-xl font-semibold text-[#e8e] mb-2">Media Workshop</h3>
-                    <p class="text-gray-300">Behind-the-scenes moments from our skill-building sessions.</p>
-                </div>
+    
+                <!-- 🔜 Add future events here -->
+                <!-- Example:
+          <div class="event-card ...">
+            <img src="assets/gallery/new-event.jpg" alt="New Event" ...>
+            <h3>New Event Title</h3>
+            <p>Description of your new event...</p>
+          </div>
+          -->
+    
             </div>
         </div>
     </section>
+
+    
 
     <!-- ================= FOOTER ================= -->
     <footer class="bg-black border-t border-[#e8e]/30 py-12 px-6 text-center md:text-left">

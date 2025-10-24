@@ -25,6 +25,9 @@
         };
     </script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans&display=swap"
         rel="stylesheet">
@@ -156,42 +159,83 @@
     <section class="py-24 bg-gradient-to-b from-black via-[#1a001a] to-black border-t border-[#e8e]/20">
         <div class="max-w-7xl mx-auto text-center px-6">
             <h2 class="text-3xl font-bold text-[#e8e] mb-10">Recent Events</h2>
+    
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card -->
+    
+                <!-- Event 1: MediaPass Launch (Carousel) -->
+                <div
+                    class="bg-gray-950/60 border border-[#e8e]/30 rounded-2xl p-4 transition transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(232,136,232,0.3)]">
+                    <!-- Swiper Carousel -->
+                    <div class="swiper mySwiper1 overflow-hidden rounded-lg mb-4">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="Events_Pics&Posters/First Event/Pictures/5FED7032-D6F6-4012-9D99-A47C3C091E51.jpg" 
+                                    class="w-full h-56 object-cover rounded-lg border-2 border-[#e8e]/50">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="Events_Pics&Posters/First Event/Pictures/BE15BDF0-69DB-4F4A-8BEF-4989831C5C08.jpg" 
+                                    class="w-full h-56 object-cover rounded-lg border-2 border-[#e8e]/50">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="Events_Pics&Posters/First Event/Pictures/DBC0ACF3-5812-4F84-8E39-1C0196EBCF70.jpg" 
+                                    class="w-full h-56 object-cover rounded-lg border-2 border-[#e8e]/50">
+                            </div>
+                        </div>
+                        <div class="swiper-button-next text-[#e8e]"></div>
+                        <div class="swiper-button-prev text-[#e8e]"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <h3 class="text-[#e8e] font-semibold mb-2">Ontario Tech MediaPass Launch</h3>
+                    <p class="text-gray-300 text-sm">Our very first MediaPass launch event — celebrating creativity,
+                        innovation, and community at Ontario Tech University.</p>
+                </div>
+    
+                <!-- Event 2 -->
                 <div
                     class="bg-gray-950/60 border border-[#e8e]/30 rounded-xl overflow-hidden hover:shadow-[0_0_20px_#e8e] transition hover:-translate-y-2">
-                    <img src="assets/images/event1.jpg" class="w-full h-56 object-cover">
+                    <img src="assets/images/brand-blueprint.jpg" class="w-full h-56 object-cover rounded-lg"
+                        alt="Brand Blueprint Event">
+                    <div class="p-6">
+                        <h3 class="text-[#e8e] font-semibold mb-2">Brand Blueprint: Creators & Entrepreneurs</h3>
+                        <p class="text-gray-300 text-sm">A Skill Series × MediaPass collab — a night on crafting standout
+                            personal and business brands.</p>
+                        <p class="text-gray-400 mt-2 text-xs">📍 ERC 2100 &nbsp; | &nbsp; 📅 October 24, 2025 &nbsp; |
+                            &nbsp; ⏰ 5PM – 8PM</p>
+                    </div>
+                </div>
+    
+                <!-- Event 3 -->
+                <div
+                    class="bg-gray-950/60 border border-[#e8e]/30 rounded-xl overflow-hidden hover:shadow-[0_0_20px_#e8e] transition hover:-translate-y-2">
+                    <img src="assets/images/otsu-fest.jpg" class="w-full h-56 object-cover rounded-lg" alt="OTSU Fest 2025">
                     <div class="p-6">
                         <h3 class="text-[#e8e] font-semibold mb-2">OTSU Fest 2025</h3>
-                        <p class="text-gray-300 text-sm">Capturing Ontario Tech’s largest student festival full of music
-                            and energy.</p>
+                        <p class="text-gray-300 text-sm">Capturing Ontario Tech’s largest student festival full of music,
+                            energy, and fun.</p>
                     </div>
                 </div>
-                <div
-                    class="bg-gray-950/60 border border-[#e8e]/30 rounded-xl overflow-hidden hover:shadow-[0_0_20px_#e8e] transition hover:-translate-y-2">
-                    <img src="assets/images/event2.jpg" class="w-full h-56 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-[#e8e] font-semibold mb-2">HackHive Workshop</h3>
-                        <p class="text-gray-300 text-sm">Students came together to explore coding, AI, and innovation.
-                        </p>
-                    </div>
-                </div>
-                <div
-                    class="bg-gray-950/60 border border-[#e8e]/30 rounded-xl overflow-hidden hover:shadow-[0_0_20px_#e8e] transition hover:-translate-y-2">
-                    <img src="assets/images/event3.jpg" class="w-full h-56 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-[#e8e] font-semibold mb-2">Cultural Night</h3>
-                        <p class="text-gray-300 text-sm">A night of diversity and performance — captured beautifully by
-                            our team.</p>
-                    </div>
-                </div>
+    
             </div>
+    
             <a href="events.html"
                 class="mt-10 inline-block bg-[#e8e] hover:bg-[#d4d] text-black font-semibold py-3 px-6 rounded-full transition hover:scale-105">
                 View All Events
             </a>
         </div>
     </section>
+    
+    <!-- Swiper.js for Event 1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        const swiper1 = new Swiper(".mySwiper1", {
+            loop: true,
+            pagination: { el: ".swiper-pagination", clickable: true },
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+            autoplay: { delay: 4000, disableOnInteraction: false },
+        });
+    </script>
+
 
     <!-- ================= GALLERY PREVIEW ================= -->
     <section class="max-w-7xl mx-auto py-24 px-6 text-center">
