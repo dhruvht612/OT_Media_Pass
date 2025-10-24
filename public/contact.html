@@ -194,19 +194,43 @@
         </div>
     </footer>
 
-
-
-
     <!-- SCRIPTS -->
-    <script src="https://kit.fontawesome.com/a2e0ad63c5.js" crossorigin="anonymous"></script>
     <script>
-        function handleContact(event) {
+        async function handleContact(event) {
             event.preventDefault();
-            document.getElementById("contactForm").reset();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
             const msg = document.getElementById("formMessage");
-            msg.classList.remove("hidden");
-            msg.scrollIntoView({ behavior: "smooth" });
-            return false;
+
+            // Send POST request to backend
+            try {
+                const res = await fetch("http://localhost:3000/api/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, email, message })
+                });
+
+                const data = await res.json();
+
+                if (data.success) {
+                    msg.textContent = "✅ Thank you! Your message has been sent.";
+                    msg.classList.remove("hidden");
+                    msg.classList.add("text-lavender");
+                    document.getElementById("contactForm").reset();
+                    msg.scrollIntoView({ behavior: "smooth" });
+                } else {
+                    msg.textContent = "⚠️ Something went wrong. Please try again.";
+                    msg.classList.remove("hidden");
+                    msg.classList.add("text-red-400");
+                }
+            } catch (error) {
+                console.error("Error submitting form:", error);
+                msg.textContent = "❌ Error sending message. Please check your connection.";
+                msg.classList.remove("hidden");
+                msg.classList.add("text-red-400");
+            }
         }
     </script>
 

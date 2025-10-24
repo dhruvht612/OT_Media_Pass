@@ -1,0 +1,36 @@
+{
+  "name": "ot_media_pass",
+  "version": "1.0.0",
+  "description": "Official website for the Ontario Tech Media Pass — Node.js + Express backend serving static frontend and API routes for events, team, and gallery.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhruvht612/OT_Media_Pass.git"
+  },
+  "keywords": [
+    "ontario-tech",
+    "media-pass",
+    "express",
+    "tailwind",
+    "nodejs",
+    "frontend-backend"
+  ],
+  "author": "Dhruv Thakar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhruvht612/OT_Media_Pass/issues"
+  },
+  "homepage": "https://github.com/dhruvht612/OT_Media_Pass#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

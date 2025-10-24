@@ -1,0 +1,69 @@
+# ===============================
+# 📦 Node Environment
+# ===============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ===============================
+# 🔑 Environment Files
+# ===============================
+.env
+.env.local
+.env.*.local
+
+# ===============================
+# 🧠 Data Files (Local JSON APIs)
+# ===============================
+# These JSONs may contain sensitive or changing local data.
+# If you want them tracked, remove this section.
+data/*.json
+
+# ===============================
+# 🖼️ Media / Uploads
+# ===============================
+# Ignore temporary or raw media not needed in Git.
+public/Events_Pics&Posters/**/Pictures/
+public/Events_Pics&Posters/**/temp/
+public/Team_Pictures/temp/
+public/gallery/temp/
+
+# ===============================
+# 🏗️ Build & Cache
+# ===============================
+dist/
+build/
+.cache/
+.tmp/
+coverage/
+
+# ===============================
+# 🧩 Editor / System Files
+# ===============================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===============================
+# ⚙️ Logs & Runtime Data
+# ===============================
+logs/
+*.log
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ===============================
+# 🚀 Deployment / Archives
+# ===============================
+.vercel/
+.netlify/
+*.zip
+*.tar.gz
+*.bak
