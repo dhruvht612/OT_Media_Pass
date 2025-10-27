@@ -47,6 +47,7 @@
         .gradient-text {
             background: linear-gradient(90deg, #e8e, #c7a0ff, #fff);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
     </style>
@@ -112,6 +113,67 @@
         });
     </script>
 
+    <!-- Stats Counter Animation Script -->
+    <script>
+        // Stats counter animation
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-count'));
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + '+';
+                }
+            }, 16);
+        }
+
+        // Intersection Observer for stats counter
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statItems = entry.target.querySelectorAll('.stat-item > div[data-count]');
+                    statItems.forEach(item => {
+                        if (!item.classList.contains('counted')) {
+                            item.classList.add('counted');
+                            animateCounter(item);
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe stats section
+        document.addEventListener('DOMContentLoaded', () => {
+            const statsSection = document.querySelector('section.py-16.bg-gradient-to-r');
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+
+            // Smooth scroll for scroll indicator
+            const scrollIndicator = document.querySelector('.animate-bounce');
+            if (scrollIndicator) {
+                scrollIndicator.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: window.innerHeight,
+                        behavior: 'smooth'
+                    });
+                });
+                scrollIndicator.style.cursor = 'pointer';
+            }
+        });
+    </script>
+
  
 
 
@@ -131,27 +193,108 @@
                 Explore Gallery
             </a>
         </div>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-[#e8e] text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- ================= STATS COUNTER ================= -->
+    <section class="py-16 bg-gradient-to-r from-[#1a001a] via-black to-[#1a001a] border-y border-[#e8e]/20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="stat-item">
+                    <div class="text-4xl md:text-5xl font-bold text-[#e8e] mb-2" data-count="50">0</div>
+                    <div class="text-white/70 text-sm md:text-base">Events Covered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="text-4xl md:text-5xl font-bold text-[#e8e] mb-2" data-count="1000">0</div>
+                    <div class="text-white/70 text-sm md:text-base">Photos Taken</div>
+                </div>
+                <div class="stat-item">
+                    <div class="text-4xl md:text-5xl font-bold text-[#e8e] mb-2" data-count="6">0</div>
+                    <div class="text-white/70 text-sm md:text-base">Team Members</div>
+                </div>
+                <div class="stat-item">
+                    <div class="text-4xl md:text-5xl font-bold text-[#e8e] mb-2" data-count="15">0</div>
+                    <div class="text-white/70 text-sm md:text-base">Partners</div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- ================= ABOUT ================= -->
-    <section class="max-w-7xl mx-auto py-24 px-6 grid md:grid-cols-2 gap-12 items-center">
-        <img src="Team_Pictures/Team_Pic.jpg" alt="Media Team"
-            class="rounded-2xl shadow-lg hover:shadow-[#e8e]/40 transition hover:scale-105">
-        <div>
-            <h2 class="text-3xl font-bold text-[#e8e] mb-4">About Ontario Tech Media Pass</h2>
-            <p class="text-white/80 mb-4">
-                We are a student-led organization dedicated to capturing and sharing the spirit of Ontario Tech
-                University. Our creative team produces professional-level media showcasing events, people, and stories
-                that shape our community.
-            </p>
-            <p class="text-white/80">
-                Whether it’s concerts, cultural nights, or galas — we bring the lens that tells your story with passion
-                and precision.
-            </p>
-            <a href="about.html"
-                class="mt-6 inline-block bg-lavender hover:bg-white text-black font-semibold py-2 px-6 rounded-full transition hover:scale-105">
-                Learn More
-            </a>
+    <section class="max-w-7xl mx-auto py-24 px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <img src="Team_Pictures/Team_Pic.jpg" alt="Media Team"
+                class="rounded-2xl shadow-lg hover:shadow-[#e8e]/40 transition hover:scale-105">
+            <div>
+                <h2 class="text-3xl font-bold text-[#e8e] mb-4">About Ontario Tech Media Pass</h2>
+                <p class="text-white/80 mb-4">
+                    We are a student-led organization dedicated to capturing and sharing the spirit of Ontario Tech
+                    University. Our creative team produces professional-level media showcasing events, people, and stories
+                    that shape our community.
+                </p>
+                <p class="text-white/80 mb-6">
+                    Whether it's concerts, cultural nights, or galas — we bring the lens that tells your story with passion
+                    and precision.
+                </p>
+                <a href="about.html"
+                    class="inline-block bg-lavender hover:bg-white text-black font-semibold py-2 px-6 rounded-full transition hover:scale-105">
+                    Learn More
+                </a>
+            </div>
+        </div>
+        
+        <!-- Team Preview -->
+        <div class="mt-16">
+            <h3 class="text-2xl font-bold text-[#e8e] mb-8 text-center">Meet Our Team</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="text-center group cursor-pointer">
+                    <div class="mb-3 relative overflow-hidden rounded-full w-24 h-24 mx-auto border-2 border-[#e8e]/30 group-hover:border-[#e8e] transition">
+                        <img src="Team_Pictures/Justin_Pic.jpg" alt="Justin" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    </div>
+                    <h4 class="text-[#e8e] font-semibold text-sm">Justin</h4>
+                    <p class="text-white/60 text-xs">Media Director</p>
+                </div>
+                <div class="text-center group cursor-pointer">
+                    <div class="mb-3 relative overflow-hidden rounded-full w-24 h-24 mx-auto border-2 border-[#e8e]/30 group-hover:border-[#e8e] transition">
+                        <img src="Team_Pictures/Hannah_Pic.jpg" alt="Hannah" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    </div>
+                    <h4 class="text-[#e8e] font-semibold text-sm">Hannah</h4>
+                    <p class="text-white/60 text-xs">Content Strategist</p>
+                </div>
+                <div class="text-center group cursor-pointer">
+                    <div class="mb-3 relative overflow-hidden rounded-full w-24 h-24 mx-auto border-2 border-[#e8e]/30 group-hover:border-[#e8e] transition">
+                        <img src="Team_Pictures/Ryan_Pic.jpg" alt="Ryan" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    </div>
+                    <h4 class="text-[#e8e] font-semibold text-sm">Ryan</h4>
+                    <p class="text-white/60 text-xs">Technical Support</p>
+                </div>
+                <div class="text-center group cursor-pointer">
+                    <div class="mb-3 relative overflow-hidden rounded-full w-24 h-24 mx-auto border-2 border-[#e8e]/30 group-hover:border-[#e8e] transition">
+                        <img src="Team_Pictures/AlZaara_Pic.jpg" alt="Al Zaara" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    </div>
+                    <h4 class="text-[#e8e] font-semibold text-sm">Al Zaara</h4>
+                    <p class="text-white/60 text-xs">Creative Designer</p>
+                </div>
+                <div class="text-center group cursor-pointer">
+                    <div class="mb-3 relative overflow-hidden rounded-full w-24 h-24 mx-auto border-2 border-[#e8e]/30 group-hover:border-[#e8e] transition">
+                        <img src="Team_Pictures/Natalie_Picture.jpg" alt="Natalie" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    </div>
+                    <h4 class="text-[#e8e] font-semibold text-sm">Natalie</h4>
+                    <p class="text-white/60 text-xs">Event Coordinator</p>
+                </div>
+                <div class="text-center group cursor-pointer">
+                    <a href="team.html" class="flex flex-col items-center">
+                        <div class="mb-3 relative overflow-hidden rounded-full w-24 h-24 mx-auto border-2 border-dashed border-[#e8e]/30 group-hover:border-[#e8e] transition flex items-center justify-center">
+                            <i class="fas fa-plus text-[#e8e] text-2xl"></i>
+                        </div>
+                        <h4 class="text-[#e8e] font-semibold text-sm">View All</h4>
+                        <p class="text-white/60 text-xs">Full Team</p>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -193,7 +336,7 @@
                 <!-- Event 2 -->
                 <div
                     class="bg-gray-950/60 border border-[#e8e]/30 rounded-xl overflow-hidden hover:shadow-[0_0_20px_#e8e] transition hover:-translate-y-2">
-                    <img src="assets/images/brand-blueprint.jpg" class="w-full h-56 object-cover rounded-lg"
+                    <img src="Events_Pics&Posters/Brand Blueprint/Screenshot 2025-10-23 213215.png" class="w-full h-56 object-cover rounded-lg"
                         alt="Brand Blueprint Event">
                     <div class="p-6">
                         <h3 class="text-[#e8e] font-semibold mb-2">Brand Blueprint: Creators & Entrepreneurs</h3>
@@ -207,11 +350,10 @@
                 <!-- Event 3 -->
                 <div
                     class="bg-gray-950/60 border border-[#e8e]/30 rounded-xl overflow-hidden hover:shadow-[0_0_20px_#e8e] transition hover:-translate-y-2">
-                    <img src="assets/images/otsu-fest.jpg" class="w-full h-56 object-cover rounded-lg" alt="OTSU Fest 2025">
+                    <img src="Events_Pics&Posters/First Event/90682241-f092-45a6-9a64-b3fef398adc2.png" class="w-full h-56 object-cover rounded-lg" alt="MediaPass Launch Event">
                     <div class="p-6">
-                        <h3 class="text-[#e8e] font-semibold mb-2">OTSU Fest 2025</h3>
-                        <p class="text-gray-300 text-sm">Capturing Ontario Tech’s largest student festival full of music,
-                            energy, and fun.</p>
+                        <h3 class="text-[#e8e] font-semibold mb-2">MediaPass Launch Poster</h3>
+                        <p class="text-gray-300 text-sm">The official launch event that started it all — celebrating creativity and community at Ontario Tech.</p>
                     </div>
                 </div>
     
@@ -241,15 +383,30 @@
     <section class="max-w-7xl mx-auto py-24 px-6 text-center">
         <h2 class="text-3xl font-bold text-[#e8e] mb-8">Gallery Highlights</h2>
         <div class="grid md:grid-cols-3 gap-8">
-            <img src="assets/gallery/photo1.jpg"
-                class="rounded-xl border border-[#e8e]/50 hover:shadow-[0_0_20px_#e8e] hover:scale-105 transition"
-                alt="Gallery 1">
-            <img src="assets/gallery/photo2.jpg"
-                class="rounded-xl border border-[#e8e]/50 hover:shadow-[0_0_20px_#e8e] hover:scale-105 transition"
-                alt="Gallery 2">
-            <img src="assets/gallery/photo3.jpg"
-                class="rounded-xl border border-[#e8e]/50 hover:shadow-[0_0_20px_#e8e] hover:scale-105 transition"
-                alt="Gallery 3">
+            <div class="group relative overflow-hidden rounded-xl border border-[#e8e]/50 hover:shadow-[0_0_20px_#e8e] transition cursor-pointer">
+                <img src="Events_Pics&Posters/First Event/Pictures/5FED7032-D6F6-4012-9D99-A47C3C091E51.jpg"
+                    class="w-full h-64 object-cover group-hover:scale-110 transition duration-300"
+                    alt="Event Photography">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-center pb-4">
+                    <p class="text-white font-semibold">Event Photography</p>
+                </div>
+            </div>
+            <div class="group relative overflow-hidden rounded-xl border border-[#e8e]/50 hover:shadow-[0_0_20px_#e8e] transition cursor-pointer">
+                <img src="Events_Pics&Posters/First Event/Pictures/BE15BDF0-69DB-4F4A-8BEF-4989831C5C08.jpg"
+                    class="w-full h-64 object-cover group-hover:scale-110 transition duration-300"
+                    alt="Campus Life">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-center pb-4">
+                    <p class="text-white font-semibold">Campus Life</p>
+                </div>
+            </div>
+            <div class="group relative overflow-hidden rounded-xl border border-[#e8e]/50 hover:shadow-[0_0_20px_#e8e] transition cursor-pointer">
+                <img src="Events_Pics&Posters/First Event/Pictures/DBC0ACF3-5812-4F84-8E39-1C0196EBCF70.jpg"
+                    class="w-full h-64 object-cover group-hover:scale-110 transition duration-300"
+                    alt="Community Events">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end justify-center pb-4">
+                    <p class="text-white font-semibold">Community Events</p>
+                </div>
+            </div>
         </div>
         <a href="gallery.html"
             class="mt-10 inline-block bg-[#e8e] hover:bg-[#d4d] text-black font-semibold py-3 px-6 rounded-full transition hover:scale-105">
